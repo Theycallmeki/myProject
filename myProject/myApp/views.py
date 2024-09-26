@@ -14,10 +14,17 @@ def main(request):
 
     return render(request, 'myApp/main.html', context)
 
+def navbar(request):
+    context={}
+
+    return render(request, 'components/navbar.html')
+
+    
+
 
 
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from .forms import RegistrationForm, LoginForm
 
 def register(request):
@@ -41,4 +48,8 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, 'myApp/login.html', {'form': form})
+
+def user_logout(request):
+    logout(request)  # Log out the user
+    return redirect('home') 
 

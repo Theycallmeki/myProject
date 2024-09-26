@@ -1,0 +1,22 @@
+<!-- portfolio_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio List</title>
+</head>
+<body>
+    <h1>Portfolio List</h1>
+    <ul>
+        {% for portfolio in portfolios %}
+            <li>
+                <h2>{{ portfolio.title }}</h2>
+                <div>{{ portfolio.description|safe }}</div>  <!-- Use 'safe' to render HTML from RichTextField -->
+            </li>
+        {% empty %}
+            <li>No portfoliossd available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

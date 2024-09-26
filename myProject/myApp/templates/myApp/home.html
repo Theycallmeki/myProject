@@ -1,1 +1,164 @@
-adss
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Builder</title>
+  <style>
+    /* General styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      margin: auto;
+    }
+
+    nav h1 {
+      font-size: 24px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 15px;
+      border: 2px solid transparent;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      border: 2px solid #fff;
+      border-radius: 5px;
+    }
+
+    /* Hero section */
+    .hero {
+      background: url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      background-color: #ff7f50;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #e67044;
+    }
+
+    /* Features section */
+    .features {
+      display: flex;
+      justify-content: space-around;
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .feature-box {
+      width: 30%;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-box h3 {
+      margin-bottom: 15px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Portfolio Builder</h1>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h2>Build Your Stunning Portfolio</h2>
+      <p>Create, customize, and showcase your work effortlessly.</p>
+      <a href="{% url 'register' %}" class="btn-primary">Get Started</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-box">
+      <h3>Customizable Templates</h3>
+      <p>Choose from a variety of professional templates to kickstart your portfolio.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Easy-to-Use Builder</h3>
+      <p>Drag and drop interface to build your portfolio without coding.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Responsive Design</h3>
+      <p>Your portfolio will look great on any device, from desktop to mobile.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Portfolio Builder. All rights reserved.</p>
+  </footer>
+</body>
+</html>

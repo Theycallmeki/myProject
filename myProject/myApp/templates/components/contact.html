@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f4;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      width: 100%;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    .contact-container {
+      background-color: #fff;
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .contact-container h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      text-align: center;
+    }
+
+    .contact-container form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-container label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .contact-container input,
+    .contact-container textarea {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    .contact-container textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .btn-submit {
+      background-color: #ff7f50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .btn-submit:hover {
+      background-color: #e67044;
+    }
+
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Contact Us</h1>
+  </header>
+
+  <div class="contact-container">
+    <h2>We'd love to hear from you!</h2>
+    <form action="#">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Your email address" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+
+      <button type="submit" class="btn-submit">Send Message</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Portfolio Builder. All rights reserved.</p>
+  </footer>
+</body>
+</html>

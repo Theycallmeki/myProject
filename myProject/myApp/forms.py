@@ -30,3 +30,14 @@ class PortfolioElementForm(forms.ModelForm):
     class Meta:
         model = PortfolioElement
         fields = '__all__'
+
+
+        # myApp/forms.py
+
+from django import forms
+from .models import AboutMe
+
+class AboutMeForm(forms.ModelForm):
+    class Meta:
+        model = AboutMe
+        fields = '__all__'

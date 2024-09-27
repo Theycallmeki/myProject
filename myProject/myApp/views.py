@@ -15,6 +15,8 @@ def contact(request):
     context={}
 
     return render(request, 'components/contact.html')
+
+
 def main(request):
     context={}
 
@@ -144,3 +146,49 @@ def upload_image(request):
         file_url = fs.url(filename)
         return JsonResponse({'uploaded': True, 'url': file_url})
     return JsonResponse({'uploaded': False, 'error': 'File upload failed.'})
+
+
+
+
+
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views import View
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from .models import AboutMe
+from .forms import AboutMeForm  # Make sure to create this form
+
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .forms import AboutMeForm  # Ensure you have imported your form
+from .models import AboutMe
+
+@login_required
+def AboutMeCreateView(request):
+    if request.method == 'POST':
+        form = AboutMeForm(request.POST, request.FILES)
+        if form.is_valid():
+            Aboutme = form.save(commit=False)
+            Aboutme.user = request.user  # Set user to the logged-in user
+            Aboutme.save()
+            return redirect('main')  # Redirect to the desired page after saving
+    else:
+        form = AboutMeForm()
+
+    return render(request, 'myApp/template1.html', {'form': form})
+
+
+
+@login_required
+def aboutme_list(request):
+    # Get portfolios associated with the logged-in user
+    aboutme = aboutme.objects.filter(user=request.user)
+
+    return render(request, 'myApp/portfolio_list.html', {'about_me': aboutme})
+
+
+
+
+

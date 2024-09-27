@@ -56,6 +56,22 @@
         .delete-link:hover {
             background-color: darkred;
         }
+        .about-me {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .about-me h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        .about-me p {
+            font-size: 1em;
+            color: #555;
+        }
     </style>
 </head>
 <body>
@@ -68,6 +84,21 @@
                     <div>{{ portfolio.description|safe }}</div>
                     <a href="{% url 'edit_portfolio' portfolio.id %}" class="edit-link">Edit</a>
                     <a href="{% url 'delete_portfolio' portfolio.id %}" class="delete-link" onclick="return confirm('Are you sure you want to delete this portfolio?');">Delete</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No portfolios available.</p>
+        {% endif %}
+    </div>
+    
+    <div class="about-me">
+        <h2>{{ request.user.username }}Saved templates</h2>
+         {% if aboutme %}
+            {% for aboutme in aboutme %}
+                <div class="portfolio-card">
+                    <h2>{{ aboutme.user }}</h2>
+                    <div>{{ aboutme.description|safe }}</div>
+                    
                 </div>
             {% endfor %}
         {% else %}

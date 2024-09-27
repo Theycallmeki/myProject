@@ -5,6 +5,12 @@ def home(request):
     context={}
     return render(request,'myApp/home.html',context)
 
+
+
+def profile(request):
+    context={}
+    return render(request,'myApp/profile.html',context)
+
 def contact(request):
     context={}
 
@@ -67,23 +73,17 @@ from .models import Portfolio
 from django.shortcuts import render, redirect
 from .forms import PortfolioForm  # Ensure PortfolioForm has an ImageField
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def create_portfolio(request):
     if request.method == 'POST':
         form = PortfolioForm(request.POST)
         if form.is_valid():
-            portfolio_instance = form.save()  # Save the portfolio instance
-            
-            # Handle the creation of PortfolioElement if there are files
-            media_files = request.FILES.getlist('media')  # Adjust the name as needed
-            for media in media_files:
-                Portfolio.objects.create(
-                    portfolio=portfolio_instance,
-                    media=media,
-                    # Set other attributes as needed
-                )
-
-            return redirect('portfolio_list')  # Redirect after successful save
+            portfolio = form.save(commit=False)
+            portfolio.user = request.user  # Set the user to the currently logged-in user
+            portfolio.save()
+            return redirect('portfolio_list')  # Redirect to the portfolio list page
     else:
         form = PortfolioForm()
 
@@ -100,10 +100,16 @@ def edit_portfolio(request, portfolio_id):
         form = PortfolioForm(instance=portfolio)
     return render(request, 'myApp/edit_portfolio.html', {'form': form})
 
-def portfolio_list(request):
-    portfolios = Portfolio.objects.all()  # Retrieve all Portfolio instances
-    return render(request, 'myApp/portfolio_list.html', {'portfolios': portfolios})
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+from .models import Portfolio
 
+@login_required
+def portfolio_list(request):
+    # Get portfolios associated with the logged-in user
+    portfolios = Portfolio.objects.filter(user=request.user)
+
+    return render(request, 'myApp/portfolio_list.html', {'portfolios': portfolios})
 
 
 

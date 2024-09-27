@@ -14,6 +14,7 @@ urlpatterns = [
     path('create/', views.create, name='create'),  # Ad # Ad
     path('creates/', views.create_portfolio, name='create_portfolio'),
     path('edit/<int:portfolio_id>/', views.edit_portfolio, name='edit_portfolio'),
+     path('portfolios/delete/<int:portfolio_id>/', views.delete_portfolio, name='delete_portfolio'),
     path('portfolios/', views.portfolio_list, name='portfolio_list'),  # For function-based view
         path('ckeditor/upload/', views.upload_image, name='upload_image'),
 

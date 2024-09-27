@@ -113,6 +113,24 @@ def portfolio_list(request):
 
 
 
+
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Portfolio
+
+@login_required
+def delete_portfolio(request, portfolio_id):
+    portfolio = get_object_or_404(Portfolio, id=portfolio_id, user=request.user)
+
+    if request.method == 'POST':
+        portfolio.delete()
+        return redirect('portfolio_list')  # Redirect to the portfolio list after deletion
+
+    return render(request, 'myApp/delete_portfolio.html', {'portfolio': portfolio})
+
+
+
+
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage

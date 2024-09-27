@@ -144,9 +144,11 @@ CKEDITOR_CONFIGS = {
             {'name': 'insert', 'items': ['Image', 'Table', 'HorizontalRule', 'SpecialChar']},
             {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
             {'name': 'about', 'items': ['About']},
+             {'name': 'styles', 'items': ['Font', 'FontSize', 'TextColor', 'BGColor']}
         ],
         'extraPlugins': 'uploadimage,image2',
         'filebrowserUploadUrl': '/ckeditor/upload/',  # Set your upload URL here
+        
     }
 }
 

@@ -20,6 +20,9 @@ urlpatterns = [
     path('ckeditor/upload/', views.upload_image, name='upload_image'),
     path('aboutme_create/', views.AboutMeCreateView, name='aboutme_create'),
     path('aboutme_list/', views.aboutme_list, name='aboutme_list'),
+    path('saved_templates/', views.about_me_list, name='template_list'),
+    path('view_templates/', views.about_me_list, name='template_list'),
+
 
 
 

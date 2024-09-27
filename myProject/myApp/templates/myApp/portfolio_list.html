@@ -91,19 +91,9 @@
         {% endif %}
     </div>
     
-    <div class="about-me">
-        <h2>{{ request.user.username }}Saved templates</h2>
-         {% if aboutme %}
-            {% for aboutme in aboutme %}
-                <div class="portfolio-card">
-                    <h2>{{ aboutme.user }}</h2>
-                    <div>{{ aboutme.description|safe }}</div>
-                    
-                </div>
-            {% endfor %}
-        {% else %}
-            <p>No portfolios available.</p>
-        {% endif %}
+    <div class="portfolio-container">
+        {% include "myApp/savedTemplates.html" %}
     </div>
+    
 </body>
 </html>

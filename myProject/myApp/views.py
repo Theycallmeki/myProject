@@ -110,8 +110,12 @@ from .models import Portfolio
 def portfolio_list(request):
     # Get portfolios associated with the logged-in user
     portfolios = Portfolio.objects.filter(user=request.user)
+    about_me_profiles = AboutMe.objects.all()  
 
-    return render(request, 'myApp/portfolio_list.html', {'portfolios': portfolios})
+    return render(request, 'myApp/portfolio_list.html', {
+        'portfolios': portfolios,
+        'templates': about_me_profiles  # Pass the profiles as templates
+    })
 
 
 
@@ -187,6 +191,18 @@ def aboutme_list(request):
     aboutme = aboutme.objects.filter(user=request.user)
 
     return render(request, 'myApp/portfolio_list.html', {'about_me': aboutme})
+
+
+# views.py
+# views.py
+from django.shortcuts import render
+from .models import AboutMe
+
+def about_me_list(request):
+    about_me_profiles = AboutMe.objects.all()
+    return render(request, 'myApp/savedTemplates.html',  {'templates': about_me_profiles})
+
+
 
 
 

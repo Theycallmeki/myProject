@@ -23,10 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s2gk@qo37l4qi#31hf#u+7=i7%8ohls_&p-+^depuoa#nk42(c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'locahost', 'kiancer.onrender.com']
 
+import dj_database_url
 
 # Application definition
 
@@ -79,10 +80,11 @@ WSGI_APPLICATION = 'myProject.myProject.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgresql://postgres:postgres@localhost:5432/myProject',
+        conn_max_age=600
+    )
 }
 
 
@@ -120,6 +122,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 STATIC_URL = '/static/'  # Add a leading slash to STATIC_URL
+
 STATIC_ROOT = BASE_DIR / 'staticfiles' / 'asssets' # Directory where collectstatic will collect files
 STATICFILES_DIRS = [BASE_DIR / 'myApp' / 'static']  # Adjusted to use Path
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

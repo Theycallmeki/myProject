@@ -1,8 +1,8 @@
 databases:
   - name: myprojectdb
     plan: free
-    databaseName: myproject
-    user: myproject
+    databaseName: myProject
+    user: myProjectUser
 
 services:
   - type: web
@@ -10,7 +10,7 @@ services:
     name: myproject
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn myProject.wsgi:application"  # Update this as needed
+    startCommand: "python -m gunicorn myProject.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -18,5 +18,3 @@ services:
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
-      - key: WEB_CONCURRENCY
-        value: 4
